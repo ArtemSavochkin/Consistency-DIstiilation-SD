@@ -1,1 +1,1 @@
-# Consistency-DIstiilation-SD
+# Тестовое задание по реализиции метода Consistency-DIstiilation-SD 
