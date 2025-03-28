@@ -1,4 +1,4 @@
-# Тестовое задание по реализиции метода Consistency-Ditiilation-SD 
+# Тестовое задание по реализации метода Consistency-Ditiilation-SD 
 
 ## Запуск обучения
 ```commandline
