@@ -115,7 +115,7 @@ def process_batch(batch, device, teacher_pipe, student_unet, optimizer, noise_sc
             alpha,
             beta,
         )
-        teacher_x0 = teacher_x0_uncond + guidance_scale * (teacher_x0_cond - teacher_x0_uncond)
+        teacher_x0 = teacher_x0_cond + guidance_scale * (teacher_x0_cond - teacher_x0_uncond)
         previous_x = solver.ddim_step(teacher_x0, teacher_noise_pred, index)
         previous_x = previous_x.to(dtype=DTYPE)
 
@@ -134,7 +134,6 @@ def process_batch(batch, device, teacher_pipe, student_unet, optimizer, noise_sc
             alpha,
             beta,
         )
-    # optimizer.zero_grad(set_to_none=True)
     loss = loss_function(x_pred_student, pred_x)
     loss.backward()
     torch.nn.utils.clip_grad_norm_(student_unet.parameters(), 1.0)
