@@ -180,7 +180,9 @@ def train(args):
             torch.save(student_unet.state_dict(), os.path.join(checkpoint_dir, f"{epoch}_model.pth"))
 
     plt.plot(epochs_list, loss_per_epochs)
-    plt.savefig("Training")
+    plt.xlabel("Epochs")
+    plt.ylabel("Training loss")
+    plt.savefig("Training.png")
 
 
 if __name__ == "__main__":
