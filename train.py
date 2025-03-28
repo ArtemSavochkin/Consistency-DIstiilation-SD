@@ -93,7 +93,7 @@ def process_batch(batch, device, teacher_pipe, student_unet, optimizer, noise_sc
             start_timesteps,
             encoder_hidden_states=empty_text_embeddings
         ).sample
-        teacher_noise_pred = teacher_noise_pred_uncond + guidance_scale * (
+        teacher_noise_pred = teacher_noise_pred_cond + guidance_scale * (
                 teacher_noise_pred_cond - teacher_noise_pred_uncond)
 
         # картинка с текстом и без текста
