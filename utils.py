@@ -4,7 +4,7 @@ from torch import nn
 from diffusers import StableDiffusionPipeline
 from copy import deepcopy
 
-DTYPE = torch.float32
+DTYPE = torch.bfloat16
 
 
 class ConsistencyLoss(nn.Module):

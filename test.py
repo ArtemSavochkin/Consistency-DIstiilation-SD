@@ -7,7 +7,7 @@ import argparse
 def test(args):
     scheduler = LCMScheduler.from_pretrained(
         args.model_name,
-        subfolder= "scheduler"
+        subfolder="scheduler"
     )
     pipeline = StableDiffusionPipeline.from_pretrained(
         args.model_name,
@@ -20,19 +20,19 @@ def test(args):
 
     generator = torch.Generator(device=args.device).manual_seed(42)
     image = pipeline(
-        prompt = [args.prompt],
-        num_inference_steps = 4,
-        num_images_per_prompt = 1,
+        prompt=[args.prompt],
+        num_inference_steps=4,
+        num_images_per_prompt=1,
         generator=generator,
-        guidance_scale = 8.0,
+        guidance_scale=0.0,
     ).images[0]
-    image.save("./result.png")
+    image.save("./results/Cat.png")
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--model_name", required=False, default="sd-legacy/stable-diffusion-v1-5")
-    parser.add_argument("--checkpoint_path", required=False, default="./checkpoint/2_model.pth")
+    parser.add_argument("--checkpoint_path", required=False, default="./checkpoint/1_model.pth")
     parser.add_argument("--device", required=False, default="cuda:0" if torch.cuda.is_available() else "cpu")
     parser.add_argument("--prompt", required=False, default="Cat")
     arguments = parser.parse_args()

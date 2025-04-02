@@ -176,7 +176,9 @@ def train(args):
         loss_per_epochs.append(epoch_loss)
         epochs_list.append(epoch)
         if epoch % checkpoint_frequency == 0 or epoch == 1 or epoch == epochs:
+            student_unet.eval()
             torch.save(student_unet.state_dict(), os.path.join(checkpoint_dir, f"{epoch}_model.pth"))
+            student_unet.train()
 
     plt.plot(epochs_list, loss_per_epochs)
     plt.xlabel("Epochs")
