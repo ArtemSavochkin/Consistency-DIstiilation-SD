@@ -123,7 +123,7 @@ def process_batch(batch, device, teacher_pipe, student_unet, optimizer, noise_sc
         pred_noise_prev_x = student_unet(
             previous_x,
             timesteps,
-            encoder_hidden_states=empty_text_embeddings
+            encoder_hidden_states=text_embeddings
         ).sample
         pred_x = predicted_origin(
             pred_noise_prev_x,
